@@ -1,24 +1,36 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useEffect, useState } from "react";
+import { useUserContext } from "../context/UserContext";
+import { DashboardContainer, ProductsList } from "../styles/DashboardStyles";
+import { getProducts } from "../services/products";
+import Header from "../components/Header";
+import ProductCard from "../components/ProductCard";
+
+interface Product {
+  id: number;
+  name: string;
+  price: number;
+  image: string;
+}
 
 const DashboardPage: React.FC = () => {
-  const navigate = useNavigate();
-  const user = JSON.parse(sessionStorage.getItem('user') || '{}');
+  const { userEmail } = useUserContext();
+  const [products, setProducts] = useState<Product[]>([]);
 
-  if (!user) {
-    navigate('/login');
-    return null;
-  }
-
-  const goToAddressPage = () => {
-    navigate('/address');
-  };
+  useEffect(() => {
+    getProducts()
+      .then((data) => setProducts(data))
+      .catch((error) => console.error("Erro ao buscar produtos:", error));
+  }, []);
 
   return (
-    <div>
-      <h2>Bem-vindo ao Dashboard, {user.name}!</h2>
-      <button onClick={goToAddressPage}>Cadastrar Endereço</button>
-    </div>
+    <DashboardContainer>
+      <Header userName={userEmail || "Usuário"} />
+      <ProductsList>
+        {products.map((product) => (
+          <ProductCard key={product.id} product={product} />
+        ))}
+      </ProductsList>
+    </DashboardContainer>
   );
 };
 
