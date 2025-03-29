@@ -3,7 +3,13 @@ import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
+import axios from 'axios';
 import { useUserContext } from '../context/UserContext';
+import { 
+  Container, LeftSide, RightSide, LogoImage, Form, Label, Input, Button, ErrorMessage 
+} from '../styles/LoginStyles';
+
+const API_URL = 'http://localhost:5000';
 
 const loginSchema = yup.object().shape({
   email: yup.string().email('E-mail inválido').required('E-mail é obrigatório'),
@@ -16,36 +22,52 @@ interface LoginFormData {
 }
 
 const LoginPage: React.FC = () => {
-  const { register, handleSubmit, formState: { errors } } = useForm<LoginFormData>({
+  const { register, handleSubmit, formState: { errors } } = useForm<LoginFormData>( {
     resolver: yupResolver(loginSchema),
   });
   const { setUserEmail } = useUserContext();
   const navigate = useNavigate();
 
-  const onSubmit = (data: LoginFormData) => {
-    setUserEmail(data.email);
-    navigate('/dashboard');
+  const onSubmit = async (data: LoginFormData) => {
+    try {
+      const response = await axios.get(`${API_URL}/users?email=${data.email}`);
+      const user = response.data[0];
+
+      if (!user || user.password !== data.password) {
+        alert('E-mail ou senha incorretos!');
+        return;
+      }
+
+      localStorage.setItem('userEmail', user.email);
+      setUserEmail(user.email);
+
+      navigate('/dashboard');
+    } catch (error) {
+      console.error('Erro ao buscar usuário:', error);
+      alert('Erro ao fazer login.');
+    }
   };
 
   return (
-    <div>
-      <h1>Login</h1>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <div>
-          <label htmlFor="email">E-mail:</label>
-          <input id="email" type="email" {...register('email')} />
-          {errors.email && <span>{errors.email.message}</span>}
-        </div>
+    <Container>
+      <LeftSide>
+        <LogoImage src="/assets/dotz-logo.svg" alt="Logo Dotz" />
+      </LeftSide>
+      <RightSide>
+        <h1>Login</h1>
+        <Form onSubmit={handleSubmit(onSubmit)}>
+          <Label htmlFor="email">E-mail:</Label>
+          <Input id="email" type="email" placeholder="Digite seu e-mail" {...register('email')} />
+          {errors.email && <ErrorMessage>{errors.email.message}</ErrorMessage>}
 
-        <div>
-          <label htmlFor="password">Senha:</label>
-          <input id="password" type="password" {...register('password')} />
-          {errors.password && <span>{errors.password.message}</span>}
-        </div>
+          <Label htmlFor="password">Senha:</Label>
+          <Input id="password" type="password" placeholder="Digite sua senha" {...register('password')} />
+          {errors.password && <ErrorMessage>{errors.password.message}</ErrorMessage>}
 
-        <button type="submit">Entrar</button>
-      </form>
-    </div>
+          <Button type="submit">Entrar</Button>
+        </Form>
+      </RightSide>
+    </Container>
   );
 };
 

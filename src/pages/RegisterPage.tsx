@@ -3,7 +3,11 @@ import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
+import axios from 'axios';
 import { useUserContext } from '../context/UserContext';
+import { Container, LeftSide, RightSide, Form, Input, Label, Button, LogoImage, ErrorMessage } from '../styles/RegisterStyles';
+
+const API_URL = 'http://localhost:5000';
 
 const registerSchema = yup.object().shape({
   name: yup.string().required('Nome é obrigatório'),
@@ -26,44 +30,56 @@ const RegisterPage: React.FC = () => {
   const { setUserEmail } = useUserContext();
   const navigate = useNavigate();
 
-  const onSubmit = (data: RegisterFormData) => {
-    setUserEmail(data.email);
+  const onSubmit = async (data: RegisterFormData) => {
+    try {
+      const response = await axios.post(`${API_URL}/users`, data);
+      setUserEmail(response.data.email);
 
-    alert('Cadastro realizado com sucesso!');
-    navigate('/login');
+      alert('Cadastro realizado com sucesso!');
+      navigate('/login');
+    } catch (error) {
+      console.error('Erro ao cadastrar usuário:', error);
+      alert('Erro ao cadastrar.');
+    }
   };
 
   return (
-    <div>
-      <h1>Cadastro de Usuário</h1>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <div>
-          <label htmlFor="name">Nome:</label>
-          <input id="name" type="text" placeholder="Digite seu nome" {...register('name')} />
-          {errors.name && <span>{errors.name.message}</span>}
-        </div>
+    <Container>
+      <LeftSide>
+        <LogoImage src="/assets/dotz-logo.svg" alt="Logo Dotz" />
+      </LeftSide>
 
-        <div>
-          <label htmlFor="email">E-mail:</label>
-          <input id="email" type="email" placeholder="Digite seu e-mail" {...register('email')} />
-          {errors.email && <span>{errors.email.message}</span>}
-        </div>
+      <RightSide>
+        <h1>Cadastro de usuário</h1>
+        <Form onSubmit={handleSubmit(onSubmit)}>
+          <div>
+            <Label htmlFor="name">Nome:</Label>
+            <Input id="name" type="text" placeholder="Digite seu nome" {...register('name')} />
+            {errors.name && <ErrorMessage>{errors.name.message}</ErrorMessage>}
+          </div>
 
-        <div>
-          <label htmlFor="password">Senha:</label>
-          <input id="password" type="password" placeholder="Digite sua senha" {...register('password')} />
-          {errors.password && <span>{errors.password.message}</span>}
-        </div>
+          <div>
+            <Label htmlFor="email">E-mail:</Label>
+            <Input id="email" type="email" placeholder="Digite seu e-mail" {...register('email')} />
+            {errors.email && <ErrorMessage>{errors.email.message}</ErrorMessage>}
+          </div>
 
-        <div>
-          <label htmlFor="phone">Telefone:</label>
-          <input id="phone" type="text" placeholder="Digite seu telefone" {...register('phone')} />
-          {errors.phone && <span>{errors.phone.message}</span>}
-        </div>
+          <div>
+            <Label htmlFor="password">Senha:</Label>
+            <Input id="password" type="password" placeholder="Digite sua senha" {...register('password')} />
+            {errors.password && <ErrorMessage>{errors.password.message}</ErrorMessage>}
+          </div>
 
-        <button type="submit">Cadastrar</button>
-      </form>
-    </div>
+          <div>
+            <Label htmlFor="phone">Telefone:</Label>
+            <Input id="phone" type="text" placeholder="Digite seu telefone" {...register('phone')} />
+            {errors.phone && <ErrorMessage>{errors.phone.message}</ErrorMessage>}
+          </div>
+
+          <Button type="submit">Cadastrar</Button>
+        </Form>
+      </RightSide>
+    </Container>
   );
 };
 
