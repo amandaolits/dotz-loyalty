@@ -21,3 +21,12 @@ export const addAddress = async (addressData: any) => {
     throw error;
   }
 };
+
+export const removeAddress = async (id: string) => {
+  try {
+    await axios.delete(`${API_URL}/addresses/${id}`);
+  } catch (error) {
+    console.error('Erro ao deletar o endereço:', error);
+    throw new Error('Erro ao deletar o endereço');
+  }
+};

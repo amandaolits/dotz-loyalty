@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, ReactNode } from 'react';
+import React, { createContext, useContext, useState, ReactNode, useEffect } from 'react';
 
 interface UserContextType {
   userEmail: string | null;
@@ -22,12 +22,24 @@ export const UserProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
   const [userEmail, setUserEmail] = useState<string | null>(null);
   const [addresses, setAddresses] = useState<AddressFormData[]>([]);
 
+  useEffect(() => {
+    const storedEmail = localStorage.getItem('userEmail');
+    if (storedEmail) {
+      setUserEmail(storedEmail);
+    }
+  }, []);
+
+  const handleSetUserEmail = (email: string) => {
+    localStorage.setItem('userEmail', email);
+    setUserEmail(email);
+  };
+
   const addAddress = (address: AddressFormData) => {
     setAddresses((prevAddresses) => [...prevAddresses, address]);
   };
 
   return (
-    <UserContext.Provider value={{ userEmail, setUserEmail, addresses, addAddress }}>
+    <UserContext.Provider value={{ userEmail, setUserEmail: handleSetUserEmail, addresses, addAddress }}>
       {children}
     </UserContext.Provider>
   );
