@@ -17,7 +17,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
     <Card>
       <ProductImage src={product.image} alt={product.name} />
       <Text>{product.name}</Text>
-      <Price>{product.price} DOTZ</Price>
+      <Price>{product.price} Dotz</Price>
     </Card>
   );
 };
