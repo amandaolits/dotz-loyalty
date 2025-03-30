@@ -55,7 +55,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   
       if (!user) {
         alert("Usuário não encontrado.");
-        setIsModalOpen(false); // Fechar o modal
+        setIsModalOpen(false);
         return;
       }
   
@@ -65,8 +65,8 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         userEmail,
         type: "debit",
         points: product.price,
-        date: new Date().toISOString().split("T")[0],
-        description: `Resgate do produto: ${product.name}`,
+        date: `${String(new Date().getDate()).padStart(2, '0')}/${String(new Date().getMonth() + 1).padStart(2, '0')}/${new Date().getFullYear()}`,
+        description: `resgate do produto: ${product.name}`,
       };
   
       await axios.post(`${API_URL}/transactions`, novaTransacao);
