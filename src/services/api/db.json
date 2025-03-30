@@ -2,48 +2,128 @@
   "users": [
     {
       "id": "1",
-      "name": "João Silva",
-      "email": "joao@email.com",
-      "password": "123456Ct!",
-      "phone": "11999999999",
-      "balance": 1500000
-    },
-    {
-      "id": "2",
-      "name": "Maria Souza",
-      "email": "maria@email.com",
-      "password": "654321Ao@",
-      "phone": "11988888888",
-      "balance": 250000
-    },
-    {
-      "id": "3",
-      "name": "Carlos Oliveira",
-      "email": "carlos@email.com",
-      "password": "abcdeF12@",
-      "phone": "11977777777",
-      "balance": 1050000
-    },
-    {
-      "id": "4",
       "name": "Ana Pereira",
       "email": "ana@email.com",
       "password": "Ana1123@",
       "phone": "11966666666",
-      "balance": 300000
+      "balance": 297800
     },
     {
-      "id": "5",
+      "id": "2",
       "name": "Pedro Martins",
       "email": "pedro@email.com",
       "password": "Pedro123@",
       "phone": "11955555555",
-      "balance": 600000
+      "balance": 594150
     }
   ],
   "addresses": [
+    {
+      "id": "d68a",
+      "email": "pedro@email.com",
+      "cep": "52147852",
+      "street": "Rua das Flores",
+      "number": "123",
+      "complement": "",
+      "city": "Florianópolis",
+      "state": "SC"
+    },
+    {
+      "id": "797a",
+      "email": "pedro@email.com",
+      "cep": "52639874",
+      "street": "Rua Brasil",
+      "number": "456",
+      "complement": "",
+      "city": "Salvador",
+      "state": "BA"
+    },
+    {
+      "id": "1c86",
+      "email": "ana@email.com",
+      "cep": "54123987",
+      "street": "Avenida Santos Dumont",
+      "number": "42",
+      "complement": "Casa B",
+      "city": "Rio de Janeiro",
+      "state": "RJ"
+    },
+    {
+      "id": "548e",
+      "email": "ana@email.com",
+      "cep": "56987412",
+      "street": "Rua da PAz",
+      "number": "10",
+      "complement": "Bloco A",
+      "city": "Recife",
+      "state": "PE"
+    }
   ],
   "transactions": [
+    {
+      "id": "6c56",
+      "userEmail": "pedro@email.com",
+      "type": "debit",
+      "points": 1200,
+      "date": "30/03/2025",
+      "description": "resgate do produto: Geladeira Frost Free"
+    },
+    {
+      "id": "fdb4",
+      "userEmail": "pedro@email.com",
+      "type": "debit",
+      "points": 800,
+      "date": "30/03/2025",
+      "description": "resgate do produto: Notebook ABC"
+    },
+    {
+      "id": "ceed",
+      "userEmail": "pedro@email.com",
+      "type": "debit",
+      "points": 2000,
+      "date": "30/03/2025",
+      "description": "resgate do produto: Console de Videogame"
+    },
+    {
+      "id": "e900",
+      "userEmail": "pedro@email.com",
+      "type": "debit",
+      "points": 250,
+      "date": "30/03/2025",
+      "description": "resgate do produto: Caixa de Som Bluetooth Portátil"
+    },
+    {
+      "id": "42ac",
+      "userEmail": "pedro@email.com",
+      "type": "debit",
+      "points": 700,
+      "date": "30/03/2025",
+      "description": "resgate do produto: Monitor LED Full HD"
+    },
+    {
+      "id": "049e",
+      "userEmail": "ana@email.com",
+      "type": "debit",
+      "points": 600,
+      "date": "30/03/2025",
+      "description": "resgate do produto: Bicicleta Speed"
+    },
+    {
+      "id": "c145",
+      "userEmail": "ana@email.com",
+      "type": "debit",
+      "points": 700,
+      "date": "30/03/2025",
+      "description": "resgate do produto: Violão Clássico"
+    },
+    {
+      "id": "4b17",
+      "userEmail": "ana@email.com",
+      "type": "debit",
+      "points": 900,
+      "date": "30/03/2025",
+      "description": "resgate do produto: Máquina de Café Expresso"
+    }
   ],
   "products": [
     {
@@ -159,27 +239,5 @@
       "image": "/assets/violao.webp"
     }
   ],
-  "orders": [
-    {
-      "id": "1",
-      "userId": 1,
-      "productId": 1,
-      "status": "Em processamento",
-      "date": "2025-03-27T12:00:00Z"
-    },
-    {
-      "id": "2",
-      "userId": 2,
-      "productId": 3,
-      "status": "Enviado",
-      "date": "2025-03-25T09:00:00Z"
-    },
-    {
-      "id": "3",
-      "userId": 3,
-      "productId": 5,
-      "status": "Entregue",
-      "date": "2025-03-20T18:00:00Z"
-    }
-  ]
+  "orders": []
 }
