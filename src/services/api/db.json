@@ -4,90 +4,159 @@
       "id": "1",
       "name": "João Silva",
       "email": "joao@email.com",
-      "password": "123456",
-      "phone": "11999999999"
+      "password": "123456Ct!",
+      "phone": "11999999999",
+      "balance": 1500000
     },
     {
       "id": "2",
       "name": "Maria Souza",
       "email": "maria@email.com",
-      "password": "654321",
-      "phone": "11988888888"
+      "password": "654321Ao@",
+      "phone": "11988888888",
+      "balance": 250000
     },
     {
       "id": "3",
       "name": "Carlos Oliveira",
       "email": "carlos@email.com",
-      "password": "abcdef",
-      "phone": "11977777777"
+      "password": "abcdeF12@",
+      "phone": "11977777777",
+      "balance": 1050000
     },
     {
       "id": "4",
       "name": "Ana Pereira",
       "email": "ana@email.com",
-      "password": "ana123",
-      "phone": "11966666666"
+      "password": "Ana1123@",
+      "phone": "11966666666",
+      "balance": 300000
     },
     {
       "id": "5",
       "name": "Pedro Martins",
       "email": "pedro@email.com",
-      "password": "pedro123",
-      "phone": "11955555555"
+      "password": "Pedro123@",
+      "phone": "11955555555",
+      "balance": 600000
     }
   ],
-  "addresses": [],
+  "addresses": [
+  ],
   "transactions": [
-    {
-      "id": "1",
-      "userId": 1,
-      "type": "credit",
-      "points": 500,
-      "date": "2025-03-27T10:00:00Z"
-    },
-    {
-      "id": "2",
-      "userId": 2,
-      "type": "debit",
-      "points": 200,
-      "date": "2025-03-26T15:30:00Z"
-    }
   ],
   "products": [
     {
       "id": "1",
       "name": "Smartphone XYZ",
-      "category": "Eletrônicos",
+      "category": "Eletrônicos e Informática",
       "price": 300,
-      "image": "https://via.placeholder.com/150"
+      "image": "/assets/smartphone.webp"
     },
     {
       "id": "2",
       "name": "Notebook ABC",
-      "category": "Informática",
+      "category": "Eletrônicos e Informática",
       "price": 800,
-      "image": "https://via.placeholder.com/150"
+      "image": "/assets/notebook.webp"
     },
     {
       "id": "3",
       "name": "Fone de Ouvido Bluetooth",
-      "category": "Acessórios",
+      "category": "Áudio e Som",
       "price": 100,
-      "image": "https://via.placeholder.com/150"
+      "image": "/assets/fone.webp"
     },
     {
       "id": "4",
       "name": "Geladeira Frost Free",
-      "category": "Eletrodomésticos",
+      "category": "Casa e Eletrodomésticos",
       "price": 1200,
-      "image": "https://via.placeholder.com/150"
+      "image": "/assets/geladeira.webp"
     },
     {
       "id": "5",
       "name": "Bicicleta Speed",
-      "category": "Esportes",
+      "category": "Esporte e Lazer",
       "price": 600,
-      "image": "https://via.placeholder.com/150"
+      "image": "/assets/bicicleta.webp"
+    },
+    {
+      "id": "6",
+      "name": "TV 4K Ultra HD",
+      "category": "Eletrônicos e Informática",
+      "price": 2500,
+      "image": "/assets/tv.webp"
+    },
+    {
+      "id": "7",
+      "name": "Console de Videogame",
+      "category": "Eletrônicos e Informática",
+      "price": 2000,
+      "image": "/assets/console.webp"
+    },
+    {
+      "id": "8",
+      "name": "Câmera Fotográfica Profissional",
+      "category": "Fotografia e Filmagem",
+      "price": 3200,
+      "image": "/assets/camera.webp"
+    },
+    {
+      "id": "9",
+      "name": "Máquina de Café Expresso",
+      "category": "Casa e Eletrodomésticos",
+      "price": 900,
+      "image": "/assets/cafeteira.webp"
+    },
+    {
+      "id": "10",
+      "name": "Guitarra Elétrica",
+      "category": "Instrumentos Musicais",
+      "price": 1500,
+      "image": "/assets/guitarra.webp"
+    },
+    {
+      "id": "11",
+      "name": "Cadeira de Escritório Ergonômica",
+      "category": "Casa e Eletrodomésticos",
+      "price": 900,
+      "image": "/assets/cadeira.webp"
+    },
+    {
+      "id": "12",
+      "name": "Drone com Câmera 4K",
+      "category": "Eletrônicos e Informática",
+      "price": 2800,
+      "image": "/assets/drone.webp"
+    },
+    {
+      "id": "13",
+      "name": "Teclado Mecânico RGB",
+      "category": "Eletrônicos e Informática",
+      "price": 350,
+      "image": "/assets/teclado.webp"
+    },
+    {
+      "id": "14",
+      "name": "Caixa de Som Bluetooth Portátil",
+      "category": "Áudio e Som",
+      "price": 250,
+      "image": "/assets/som.webp"
+    },
+    {
+      "id": "15",
+      "name": "Monitor LED Full HD",
+      "category": "Eletrônicos e Informática",
+      "price": 700,
+      "image": "/assets/monitor.webp"
+    },
+    {
+      "id": "16",
+      "name": "Violão Clássico",
+      "category": "Instrumentos Musicais",
+      "price": 700,
+      "image": "/assets/violao.webp"
     }
   ],
   "orders": [
