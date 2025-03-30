@@ -45,7 +45,7 @@ const DashboardPage: React.FC = () => {
 
   return (
     <DashboardContainer>
-      <Header userName={userEmail || "Usuário"} />
+      <Header />
       <h1>Troque por produtos</h1>
       <p>São milhares de produtos de diversas categorias e valores pra você escolher!</p>
       <SearchContainer>
