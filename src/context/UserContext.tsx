@@ -3,6 +3,8 @@ import React, { createContext, useContext, useState, ReactNode, useEffect } from
 interface UserContextType {
   userEmail: string | null;
   setUserEmail: (email: string) => void;
+  userBalance: number;
+  setUserBalance: React.Dispatch<React.SetStateAction<number>>; // Atualização aqui para suportar função ou valor direto
   addresses: AddressFormData[];
   addAddress: (address: AddressFormData) => void;
 }
@@ -20,6 +22,7 @@ const UserContext = createContext<UserContextType | undefined>(undefined);
 
 export const UserProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [userEmail, setUserEmail] = useState<string | null>(null);
+  const [userBalance, setUserBalance] = useState<number>(0); // Armazenando o saldo no estado
   const [addresses, setAddresses] = useState<AddressFormData[]>([]);
 
   useEffect(() => {
@@ -39,7 +42,7 @@ export const UserProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
   };
 
   return (
-    <UserContext.Provider value={{ userEmail, setUserEmail: handleSetUserEmail, addresses, addAddress }}>
+    <UserContext.Provider value={{ userEmail, userBalance, setUserBalance, setUserEmail: handleSetUserEmail, addresses, addAddress }}>
       {children}
     </UserContext.Provider>
   );

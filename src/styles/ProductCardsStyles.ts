@@ -7,10 +7,10 @@ export const Card = styled.div`
   border-radius: 10px;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease-in-out;
-  max-height: 250px;
+  min-height: 280px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
 
   &:hover {
@@ -33,7 +33,37 @@ export const Price = styled.p`
 
 export const ProductImage = styled.img`
   width: 80%;
-  height: auto;
+  height: 140px;
   border-radius: 10px;
   margin-bottom: 10px;
+`;
+
+export const Button = styled.button`
+  background-color: #FF4F0E;
+  color: #fff;
+  font-size: 16px;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  margin-top: 10px;
+  cursor: pointer;
+  width: 100%;
+
+  &:hover {
+    background-color: #ff7f45;
+  }
+`;
+
+export const Modal = styled.div`
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;

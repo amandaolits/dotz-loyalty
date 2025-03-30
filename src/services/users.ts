@@ -19,3 +19,24 @@ export const getUsers = async () => {
     return [];
   }
 };
+
+export const getUserBalance = async (email: string) => {
+  try {
+    const response = await axios.get(`${API_URL}/users?email=${email}`);
+    const user = response.data[0];
+    return user ? user.balance : 0; // Retorna o saldo do usuário
+  } catch (error) {
+    console.error("Erro ao buscar saldo do usuário:", error);
+    return 0;
+  }
+};
+
+export const updateUserBalance = async (email: string, balance: number) => {
+  try {
+    const response = await axios.patch(`${API_URL}/users/${email}`, { balance });
+    return response.data;
+  } catch (error) {
+    console.error("Erro ao atualizar saldo:", error);
+    throw error;
+  }
+};
