@@ -61,6 +61,7 @@ export const Form = styled.form`
 export const ContainerLabel = styled.div`
   margin-top: 20px;
 `;
+
 export const Label = styled.label`
   font-size: 14px;
   font-weight: bold;
@@ -110,4 +111,16 @@ export const Button = styled.button`
 export const ErrorMessage = styled.span`
   color: red;
   font-size: 12px;
+`;
+
+export const LoginLink = styled.span`
+  margin-top: 15px;
+  color: #333;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+
+  &:hover {
+    color: #FF4F0E;
+  }
 `;

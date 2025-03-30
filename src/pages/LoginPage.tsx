@@ -6,7 +6,7 @@ import * as yup from 'yup';
 import axios from 'axios';
 import { useUserContext } from '../context/UserContext';
 import { 
-  Container, LeftSide, RightSide, LogoImage, Form, Label, Input, Button, ErrorMessage 
+  Container, LeftSide, RightSide, LogoImage, Form, Label, Input, Button, ErrorMessage, RegisterLink 
 } from '../styles/LoginStyles';
 
 const API_URL = 'http://localhost:5000';
@@ -76,6 +76,10 @@ const LoginPage: React.FC = () => {
 
           <Button type="submit">Entrar</Button>
         </Form>
+
+        <RegisterLink onClick={() => navigate('/register')}>
+          Primeira vez aqui? Cadastre-se agora.
+        </RegisterLink>
       </RightSide>
     </Container>
   );

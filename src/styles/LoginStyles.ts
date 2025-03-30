@@ -109,3 +109,15 @@ export const ErrorMessage = styled.span`
   color: red;
   font-size: 12px;
 `;
+
+export const RegisterLink = styled.span`
+  margin-top: 20px;
+  color: #333;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+
+  &:hover {
+    color: #FF4F0E;
+  }
+`;

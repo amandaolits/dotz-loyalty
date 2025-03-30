@@ -5,7 +5,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import axios from 'axios';
 import { useUserContext } from '../context/UserContext';
-import { Container, LeftSide, RightSide, Form, Input, Label, Button, LogoImage, ErrorMessage, ContainerLabel } from '../styles/RegisterStyles';
+import { Container, LeftSide, RightSide, Form, Input, Label, Button, LogoImage, ErrorMessage, ContainerLabel, LoginLink } from '../styles/RegisterStyles';
 
 const API_URL = 'http://localhost:5000';
 
@@ -55,7 +55,7 @@ const RegisterPage: React.FC = () => {
       setUserEmail(response.data.email);
 
       alert('Cadastro realizado com sucesso!');
-      navigate('/login');
+      navigate('/');
     } catch (error) {
       console.error('Erro ao cadastrar usuário:', error);
       alert('Erro ao cadastrar.');
@@ -97,6 +97,10 @@ const RegisterPage: React.FC = () => {
 
           <Button type="submit">Cadastrar</Button>
         </Form>
+
+        <LoginLink onClick={() => navigate('/')}>
+          Já tem cadastro? Faça o seu login aqui!
+        </LoginLink>
       </RightSide>
     </Container>
   );
