@@ -22,7 +22,6 @@ const addressSchema = yup.object().shape({
   cep: yup
     .string()
     .required('CEP é obrigatório')
-    .matches(/^\d{5}-\d{3}$/, 'CEP inválido, deve estar no formato 00000-000')
     .matches(/^\d{8}$/, 'CEP inválido, deve ser composto apenas por números'),
     
   street: yup
@@ -138,7 +137,7 @@ const AddressPage: React.FC = () => {
         <AddressList>
           {addresses.map((address, index) => (
             <li key={index}>
-              {address.street}, {address.number} - {address.city}, {address.state}
+              {address.street}, {address.number}, {address.cep} - {address.city}, {address.state}
               <img
                 src="/assets/remove.svg"
                 alt="Remover Endereço"
