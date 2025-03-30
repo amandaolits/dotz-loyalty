@@ -101,7 +101,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
             <h3>Confirmar resgate</h3>
             <p>Produto: {product.name}</p>
             <p>Valor: {product.price} Dotz</p>
-            <p>Saldo atual: {userBalance} Dotz</p>
+            <p>Saldo atual: {userBalance ? userBalance : '0'} Dotz</p>
             <div className="modal-buttons">
               <Button className="confirm" onClick={handleConfirmResgate}>Confirmar</Button>
               <Button className="cancel" onClick={() => setIsModalOpen(false)} style={{backgroundColor: '#a0a0a0'}}>Cancelar</Button>
