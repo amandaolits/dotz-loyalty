@@ -37,3 +37,46 @@ npm run server
 npm run start
 ```
 
+## 👤 Exemplos de usuário para acesso 
+```bash
+    {
+      "id": "1",
+      "name": "João Silva",
+      "email": "joao@email.com",
+      "password": "123456Ct!",
+      "phone": "11999999999",
+      "balance": 1500000
+    },
+    {
+      "id": "2",
+      "name": "Maria Souza",
+      "email": "maria@email.com",
+      "password": "654321Ao@",
+      "phone": "11988888888",
+      "balance": 250000
+    },
+    {
+      "id": "3",
+      "name": "Carlos Oliveira",
+      "email": "carlos@email.com",
+      "password": "abcdeF12@",
+      "phone": "11977777777",
+      "balance": 1050000
+    },
+    {
+      "id": "4",
+      "name": "Ana Pereira",
+      "email": "ana@email.com",
+      "password": "Ana1123@",
+      "phone": "11966666666",
+      "balance": 300000
+    },
+    {
+      "id": "5",
+      "name": "Pedro Martins",
+      "email": "pedro@email.com",
+      "password": "Pedro123@",
+      "phone": "11955555555",
+      "balance": 600000
+    }
+```
