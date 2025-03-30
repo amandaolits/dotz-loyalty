@@ -7,13 +7,54 @@ import { addAddress, getAddresses, removeAddress } from '../services/addresses';
 import Header from '../components/Header';
 import { AddressList, Container, ModalContent, ModalOverlay, NoAddresses, TitleContainer } from '../styles/AddressStyles';
 
+interface Address {
+  id: string;
+  email: string;
+  cep: string;
+  street: string;
+  number: string;
+  complement?: string | null;
+  city: string;
+  state: string;
+}
+
 const addressSchema = yup.object().shape({
-  cep: yup.string().required('CEP é obrigatório').matches(/^\d{5}-\d{3}$/, 'CEP inválido'),
-  street: yup.string().required('Rua é obrigatória'),
-  number: yup.string().required('Número é obrigatório'),
-  complement: yup.string().nullable(),
-  city: yup.string().required('Cidade é obrigatória'),
-  state: yup.string().required('Estado é obrigatório'),
+  cep: yup
+    .string()
+    .required('CEP é obrigatório')
+    .matches(/^\d{5}-\d{3}$/, 'CEP inválido, deve estar no formato 00000-000')
+    .matches(/^\d{8}$/, 'CEP inválido, deve ser composto apenas por números'),
+    
+  street: yup
+    .string()
+    .required('Rua é obrigatória')
+    .min(3, 'A rua deve ter pelo menos 3 caracteres')
+    .max(100, 'A rua deve ter no máximo 100 caracteres'),
+
+  number: yup
+    .string()
+    .required('Número é obrigatório')
+    .matches(/^\d+$/, 'Número inválido, deve ser um número')
+    .min(1, 'O número deve ter pelo menos 1 caractere')
+    .max(10, 'O número deve ter no máximo 10 caracteres'),
+
+  complement: yup
+    .string()
+    .nullable()
+    .max(100, 'O complemento deve ter no máximo 50 caracteres'),
+
+  city: yup
+    .string()
+    .required('Cidade é obrigatória')
+    .min(3, 'A cidade deve ter pelo menos 3 caracteres')
+    .max(100, 'A cidade deve ter no máximo 50 caracteres'),
+
+  state: yup
+    .string()
+    .required('Estado é obrigatório')
+    .matches(/^[A-Za-z\s]+$/, 'O estado deve conter apenas letras e espaços')
+    .min(2, 'O estado deve ter pelo menos 2 caracteres')
+    .max(100, 'O estado deve ter no máximo 50 caracteres'),
 });
 
 interface AddressFormData {
@@ -26,26 +67,30 @@ interface AddressFormData {
 }
 
 const AddressPage: React.FC = () => {
-  const { register, handleSubmit, formState: { errors }, reset } = useForm<AddressFormData>({
+  const { register, handleSubmit, formState: { errors }, reset } = useForm<AddressFormData>( {
     resolver: yupResolver(addressSchema),
   });
 
   const { userEmail } = useUserContext();
-  const [addresses, setAddresses] = useState<any[]>([]);
+  const [addresses, setAddresses] = useState<Address[]>([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     const fetchAddresses = async () => {
       try {
-        const addressList = await getAddresses();
-        setAddresses(addressList);
+        const addressList: Address[] = await getAddresses();
+
+        const filteredAddresses = addressList.filter(address => address.email === userEmail);
+        setAddresses(filteredAddresses);
       } catch (error) {
         console.error('Erro ao carregar endereços:', error);
       }
     };
 
-    fetchAddresses();
-  }, []);
+    if (userEmail) {
+      fetchAddresses();
+    }
+  }, [userEmail]);
 
   const onSubmit = async (data: AddressFormData) => {
     if (userEmail) {

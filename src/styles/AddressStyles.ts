@@ -82,6 +82,12 @@ export const ModalContent = styled.div`
     display: block;
     font-size: 16px;
     font-weight: 600;
+    margin-top: 10px;
+  }
+
+  span {
+    color: red;
+    font-size: 12px;
   }
 
   input {
@@ -91,7 +97,6 @@ export const ModalContent = styled.div`
     background-color: transparent;
     border: none;
     border-bottom: 2px solid #ccc;
-    margin-bottom: 15px;
     transition: border-color 0.3s ease;
 
     &::placeholder {
@@ -111,7 +116,7 @@ export const ModalContent = styled.div`
   button {
     width: 100%;
     padding: 10px;
-    margin-top: 10px;
+    margin-top: 20px;
     border: none;
     cursor: pointer;
     border-radius: 5px;

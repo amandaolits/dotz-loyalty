@@ -12,8 +12,18 @@ import {
 const API_URL = 'http://localhost:5000';
 
 const loginSchema = yup.object().shape({
-  email: yup.string().email('E-mail inválido').required('E-mail é obrigatório'),
-  password: yup.string().required('Senha é obrigatória'),
+  email: yup.string()
+    .trim()
+    .email('E-mail inválido')
+    .required('E-mail é obrigatório'),
+
+  password: yup.string()
+    .required('Senha é obrigatória')
+    .min(8, 'A senha deve ter pelo menos 8 caracteres')
+    .matches(/[a-z]/, 'A senha deve conter pelo menos uma letra minúscula')
+    .matches(/[A-Z]/, 'A senha deve conter pelo menos uma letra maiúscula')
+    .matches(/[0-9]/, 'A senha deve conter pelo menos um número')
+    .matches(/[\W_]/, 'A senha deve conter pelo menos um caractere especial (!@#$%^&*)'),
 });
 
 interface LoginFormData {
