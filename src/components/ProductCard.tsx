@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Card, Price, ProductImage, Text, Button } from "../styles/ProductCardsStyles";
+import { Card, Price, ProductImage, Text, Button, TitleModal } from "../styles/ProductCardsStyles";
 import { useUserContext } from "../context/UserContext";
 import axios from "axios";
 import Modal from "../components/Modal";
@@ -97,16 +97,12 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
 
       {isModalOpen && (
         <Modal onClose={() => setIsModalOpen(false)}>
-          <div className="modal-content">
-            <h3>Confirmar resgate</h3>
-            <p>Produto: {product.name}</p>
-            <p>Valor: {product.price} Dotz</p>
-            <p>Saldo atual: {userBalance ? userBalance : '0'} Dotz</p>
-            <div className="modal-buttons">
-              <Button className="confirm" onClick={handleConfirmResgate}>Confirmar</Button>
-              <Button className="cancel" onClick={() => setIsModalOpen(false)} style={{backgroundColor: '#a0a0a0'}}>Cancelar</Button>
-            </div>
-          </div>
+          <TitleModal>Confirmar resgate</TitleModal>
+          <p>🎁 Produto: <strong>{product.name}</strong></p>
+          <p>💰 Valor: <strong>{product.price} Dotz</strong></p>
+          <p>💳 Saldo atual: <strong>{userBalance ? userBalance : '0'} Dotz</strong></p>
+          <Button className="confirm" onClick={handleConfirmResgate}>Confirmar</Button>
+          <Button className="cancel" onClick={() => setIsModalOpen(false)} style={{backgroundColor: '#a0a0a0'}}>Cancelar</Button>
         </Modal>
       )}
     </>

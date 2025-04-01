@@ -67,3 +67,10 @@ export const Modal = styled.div`
   flex-direction: column;
   align-items: center;
 `;
+
+export const TitleModal = styled.p`
+  font-size: 24px;
+  margin: 0 0 30px 0;
+  font-weight: 500;
+  text-align: center;
+`;

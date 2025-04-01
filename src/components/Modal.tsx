@@ -22,7 +22,8 @@ const ModalContent = styled.div`
   background: white;
   padding: 20px;
   border-radius: 10px;
-  text-align: center;
+  text-align: start;
+  width: 20%;
 `;
 
 const Modal: React.FC<ModalProps> = ({ onClose, children }) => {
