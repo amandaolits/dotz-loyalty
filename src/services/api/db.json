@@ -6,7 +6,7 @@
       "email": "ana@email.com",
       "password": "Ana1123@",
       "phone": "11966666666",
-      "balance": 297800
+      "balance": 29780
     },
     {
       "id": "2",
@@ -14,7 +14,7 @@
       "email": "pedro@email.com",
       "password": "Pedro123@",
       "phone": "11955555555",
-      "balance": 594150
+      "balance": 59325
     }
   ],
   "addresses": [
@@ -130,42 +130,42 @@
       "id": "1",
       "name": "Smartphone XYZ",
       "category": "Eletrônicos e Informática",
-      "price": 300,
+      "price": 3000,
       "image": "/assets/smartphone.webp"
     },
     {
       "id": "2",
       "name": "Notebook ABC",
       "category": "Eletrônicos e Informática",
-      "price": 800,
+      "price": 8000,
       "image": "/assets/notebook.webp"
     },
     {
       "id": "3",
       "name": "Fone de Ouvido Bluetooth",
       "category": "Áudio e Som",
-      "price": 100,
+      "price": 1000,
       "image": "/assets/fone.webp"
     },
     {
       "id": "4",
       "name": "Geladeira Frost Free",
       "category": "Casa e Eletrodomésticos",
-      "price": 1200,
+      "price": 12000,
       "image": "/assets/geladeira.webp"
     },
     {
       "id": "5",
       "name": "Bicicleta Speed",
       "category": "Esporte e Lazer",
-      "price": 600,
+      "price": 6000,
       "image": "/assets/bicicleta.webp"
     },
     {
       "id": "6",
       "name": "TV 4K Ultra HD",
       "category": "Eletrônicos e Informática",
-      "price": 2500,
+      "price": 15000,
       "image": "/assets/tv.webp"
     },
     {
@@ -186,14 +186,14 @@
       "id": "9",
       "name": "Máquina de Café Expresso",
       "category": "Casa e Eletrodomésticos",
-      "price": 900,
+      "price": 4900,
       "image": "/assets/cafeteira.webp"
     },
     {
       "id": "10",
       "name": "Guitarra Elétrica",
       "category": "Instrumentos Musicais",
-      "price": 1500,
+      "price": 15000,
       "image": "/assets/guitarra.webp"
     },
     {
@@ -228,14 +228,14 @@
       "id": "15",
       "name": "Monitor LED Full HD",
       "category": "Eletrônicos e Informática",
-      "price": 700,
+      "price": 2700,
       "image": "/assets/monitor.webp"
     },
     {
       "id": "16",
       "name": "Violão Clássico",
       "category": "Instrumentos Musicais",
-      "price": 700,
+      "price": 7000,
       "image": "/assets/violao.webp"
     }
   ],

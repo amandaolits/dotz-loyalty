@@ -2,27 +2,12 @@ import React, { useState, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { HeaderContainer, UserSection, UserName, UserIcon, PopoverContainer, PopoverItem } from '../styles/HeaderStyles';
 import { useUserContext } from '../context/UserContext';
-import axios from 'axios';
 
 const Header: React.FC = () => {
-  const { userEmail } = useUserContext();
-  const [userName, setUserName] = useState<string>("");
+  const { userName, setUserEmail, setUserName } = useUserContext();
   const [isPopoverOpen, setIsPopoverOpen] = useState(false);
   const popoverRef = useRef<HTMLDivElement>(null);
   const navigate = useNavigate();
-
-  useEffect(() => {
-    if (userEmail) {
-      axios.get(`http://localhost:5000/users?email=${userEmail}`)
-        .then(response => {
-          const user = response.data[0];
-          if (user) {
-            setUserName(user.name);
-          }
-        })
-        .catch(error => console.error('Erro ao buscar dados do usuário:', error));
-    }
-  }, [userEmail]);
 
   const handleLogoClick = () => {
     navigate('/dashboard');
@@ -33,6 +18,13 @@ const Header: React.FC = () => {
   };
 
   const handleLogout = () => {
+    localStorage.removeItem('authToken');
+    localStorage.removeItem('userEmail');
+    localStorage.removeItem('userName');
+
+    setUserEmail(null);
+    setUserName(null);
+
     navigate('/');
   };
 
@@ -45,8 +37,6 @@ const Header: React.FC = () => {
 
     if (isPopoverOpen) {
       document.addEventListener('mousedown', handleClickOutside);
-    } else {
-      document.removeEventListener('mousedown', handleClickOutside);
     }
 
     return () => {
@@ -73,7 +63,6 @@ const Header: React.FC = () => {
             <PopoverItem onClick={() => navigate('/dashboard')}>Catálogo</PopoverItem>
             <PopoverItem onClick={() => navigate('/statement')}>Meu extrato</PopoverItem>
             <PopoverItem onClick={() => navigate('/address')}>Meus endereços</PopoverItem>
-            <PopoverItem onClick={() => navigate('/requests')}>Meus pedidos</PopoverItem>
             <PopoverItem onClick={handleLogout}>Sair</PopoverItem>
           </PopoverContainer>
         )}

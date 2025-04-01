@@ -51,17 +51,24 @@ const RegisterPage: React.FC = () => {
 
   const onSubmit = async (data: RegisterFormData) => {
     try {
+      const existingUserResponse = await axios.get(`${API_URL}/users?email=${data.email}`);
+      
+      if (existingUserResponse.data.length > 0) {
+        alert("Este e-mail já está cadastrado!");
+        return;
+      }
+  
       const response = await axios.post(`${API_URL}/users`, data);
       setUserEmail(response.data.email);
-
-      alert('Cadastro realizado com sucesso!');
-      navigate('/');
+  
+      alert("Cadastro realizado com sucesso!");
+      navigate("/");
     } catch (error) {
-      console.error('Erro ao cadastrar usuário:', error);
-      alert('Erro ao cadastrar.');
+      console.error("Erro ao cadastrar usuário:", error);
+      alert("Erro ao cadastrar.");
     }
   };
-
+  
   return (
     <Container>
       <LeftSide>
